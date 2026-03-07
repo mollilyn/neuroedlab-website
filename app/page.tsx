@@ -5,6 +5,7 @@ import Hero from "@/src/components/Hero";
 import AboutNeuroEd from "@/src/components/AboutNeuroEd";
 import LearningApproach from "@/src/components/LearningApproach";
 import AboutMolly from "@/src/components/AboutMolly";
+import Testimonials from "@/src/components/Testimonials";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <AboutNeuroEd />
       <LearningApproach />
       <AboutMolly />
+      <Testimonials />
     </>
   );
 }
