@@ -4,4 +4,25 @@
 body {
   background-color: var(--color-background);
   color: var(--color-text);
+  font-family: var(--font-body-en);
+}
+
+.font-headline-en {
+  font-family: var(--font-headline-en);
+}
+
+.font-body-en {
+  font-family: var(--font-body-en);
+}
+
+.font-headline-th {
+  font-family: var(--font-headline-th);
+}
+
+.font-body-th {
+  font-family: var(--font-body-th);
+}
+
+.font-signature {
+  font-family: var(--font-signature);
 }
