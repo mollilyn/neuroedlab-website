@@ -6,6 +6,7 @@ import AboutNeuroEd from "@/src/components/AboutNeuroEd";
 import LearningApproach from "@/src/components/LearningApproach";
 import AboutMolly from "@/src/components/AboutMolly";
 import Testimonials from "@/src/components/Testimonials";
+import Contact from "@/src/components/Contact";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <LearningApproach />
       <AboutMolly />
       <Testimonials />
+      <Contact />
     </>
   );
 }
