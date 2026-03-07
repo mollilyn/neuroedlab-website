@@ -75,11 +75,11 @@ export default function Testimonials() {
       {/* Carousel */}
       <div className="relative flex items-center justify-center">
 
-        {/* Left arrow — sits outside the overflow clip */}
+        {/* Left arrow — desktop only */}
         <button
           onClick={handlePrev}
           aria-label="Previous testimonial"
-          className="absolute left-3 z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-md transition-shadow hover:shadow-lg md:left-8"
+          className="absolute left-3 z-10 hidden h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-md transition-shadow hover:shadow-lg sm:flex md:left-8"
           style={{ color: "var(--color-text)" }}
         >
           <span className="select-none text-2xl leading-none">‹</span>
@@ -109,9 +109,8 @@ export default function Testimonials() {
                   isActive ? "" : "hidden sm:flex"
                 }`}
                 style={{
-                  width: `${SLIDE_WIDTH}px`,
-                  // Center the slide then shift by its offset
-                  left: `calc(50% - ${SLIDE_WIDTH / 2}px)`,
+                  width: `min(${SLIDE_WIDTH}px, 90vw)`,
+                  left: `calc(50% - min(${SLIDE_WIDTH}px, 90vw) / 2)`,
                   pointerEvents: isActive ? "auto" : "none",
                 }}
                 animate={{
@@ -129,36 +128,61 @@ export default function Testimonials() {
           })}
         </div>
 
-        {/* Right arrow — sits outside the overflow clip */}
+        {/* Right arrow — desktop only */}
         <button
           onClick={handleNext}
           aria-label="Next testimonial"
-          className="absolute right-3 z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-md transition-shadow hover:shadow-lg md:right-8"
+          className="absolute right-3 z-10 hidden h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-md transition-shadow hover:shadow-lg sm:flex md:right-8"
           style={{ color: "var(--color-text)" }}
         >
           <span className="select-none text-2xl leading-none">›</span>
         </button>
       </div>
 
-      {/* Dot indicators */}
-      <div className="mt-10 flex justify-center gap-2">
-        {items.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => {
-              pauseBriefly();
-              setActiveIndex(i);
-            }}
-            aria-label={`Go to testimonial ${i + 1}`}
-            className="h-2 rounded-full transition-all duration-300"
-            style={{
-              width: i === activeIndex ? "24px" : "8px",
-              backgroundColor:
-                i === activeIndex ? "var(--color-accent)" : "var(--color-text)",
-              opacity: i === activeIndex ? 1 : 0.25,
-            }}
-          />
-        ))}
+      {/* Pagination row — dots always visible, arrows visible on mobile only */}
+      <div className="mt-10 flex items-center justify-center gap-6">
+
+        {/* Prev arrow — mobile only */}
+        <button
+          onClick={handlePrev}
+          aria-label="Previous testimonial"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-md transition-shadow hover:shadow-lg sm:hidden"
+          style={{ color: "var(--color-text)" }}
+        >
+          <span className="select-none text-2xl leading-none">‹</span>
+        </button>
+
+        {/* Dots */}
+        <div className="flex items-center gap-2">
+          {items.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => {
+                pauseBriefly();
+                setActiveIndex(i);
+              }}
+              aria-label={`Go to testimonial ${i + 1}`}
+              className="h-2 rounded-full transition-all duration-300"
+              style={{
+                width: i === activeIndex ? "24px" : "8px",
+                backgroundColor:
+                  i === activeIndex ? "var(--color-accent)" : "var(--color-text)",
+                opacity: i === activeIndex ? 1 : 0.25,
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Next arrow — mobile only */}
+        <button
+          onClick={handleNext}
+          aria-label="Next testimonial"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-md transition-shadow hover:shadow-lg sm:hidden"
+          style={{ color: "var(--color-text)" }}
+        >
+          <span className="select-none text-2xl leading-none">›</span>
+        </button>
+
       </div>
     </section>
   );
