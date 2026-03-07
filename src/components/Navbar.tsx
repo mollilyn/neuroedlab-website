@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useLanguage } from "@/src/context/LanguageContext";
 import MobileMenu from "./MobileMenu";
 
 const navLinks = [
@@ -15,6 +16,7 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { language, toggleLanguage } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 0);
@@ -33,7 +35,7 @@ export default function Navbar() {
         {/* Logo */}
         <a
           href="#hero"
-          className="font-headline-en text-lg font-semibold text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors"
+          className="font-headline-en text-lg font-semibold text-[var(--color-text)] transition-colors hover:text-[var(--color-accent)]"
         >
           NeuroEd Lab
         </a>
@@ -50,10 +52,7 @@ export default function Navbar() {
             </a>
           ))}
 
-          {/* Language toggle */}
-          <span className="text-sm font-medium text-[var(--color-text)]">
-            EN / TH
-          </span>
+          <LanguageToggle language={language} onToggle={toggleLanguage} />
         </nav>
 
         {/* Hamburger – mobile only */}
@@ -68,7 +67,47 @@ export default function Navbar() {
         </button>
       </header>
 
-      <MobileMenu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
+      <MobileMenu
+        isOpen={mobileOpen}
+        onClose={() => setMobileOpen(false)}
+        language={language}
+        onToggleLanguage={toggleLanguage}
+      />
     </>
+  );
+}
+
+interface LanguageToggleProps {
+  language: string;
+  onToggle: () => void;
+}
+
+function LanguageToggle({ language, onToggle }: LanguageToggleProps) {
+  return (
+    <button
+      onClick={onToggle}
+      className="flex items-center gap-1 text-sm font-medium"
+      aria-label="Toggle language"
+    >
+      <span
+        className={
+          language === "en"
+            ? "text-[var(--color-accent)]"
+            : "text-[var(--color-text)]"
+        }
+      >
+        EN
+      </span>
+      <span className="text-[var(--color-text)]">|</span>
+      <span
+        className={
+          language === "th"
+            ? "text-[var(--color-accent)]"
+            : "text-[var(--color-text)]"
+        }
+      >
+        TH
+      </span>
+    </button>
   );
 }

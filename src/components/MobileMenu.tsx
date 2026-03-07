@@ -14,9 +14,16 @@ const navLinks = [
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
+  language: string;
+  onToggleLanguage: () => void;
 }
 
-export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+export default function MobileMenu({
+  isOpen,
+  onClose,
+  language,
+  onToggleLanguage,
+}: MobileMenuProps) {
   return (
     <AnimatePresence>
       {isOpen && (
@@ -64,9 +71,31 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             </ul>
 
             {/* Language toggle */}
-            <div className="mt-10 text-sm font-medium text-[var(--color-text)]">
-              EN / TH
-            </div>
+            <button
+              onClick={onToggleLanguage}
+              className="mt-10 flex items-center gap-1 self-start text-sm font-medium"
+              aria-label="Toggle language"
+            >
+              <span
+                className={
+                  language === "en"
+                    ? "text-[var(--color-accent)]"
+                    : "text-[var(--color-text)]"
+                }
+              >
+                EN
+              </span>
+              <span className="text-[var(--color-text)]">|</span>
+              <span
+                className={
+                  language === "th"
+                    ? "text-[var(--color-accent)]"
+                    : "text-[var(--color-text)]"
+                }
+              >
+                TH
+              </span>
+            </button>
           </motion.nav>
         </>
       )}
