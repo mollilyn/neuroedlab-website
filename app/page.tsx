@@ -7,6 +7,7 @@ import LearningApproach from "@/src/components/LearningApproach";
 import AboutMolly from "@/src/components/AboutMolly";
 import Testimonials from "@/src/components/Testimonials";
 import Contact from "@/src/components/Contact";
+import Footer from "@/src/components/Footer";
 import FloatingLineButton from "@/src/components/FloatingLineButton";
 
 export default function Home() {
@@ -19,6 +20,7 @@ export default function Home() {
       <AboutMolly />
       <Testimonials />
       <Contact />
+      <Footer />
       <FloatingLineButton />
     </>
   );
