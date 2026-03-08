@@ -30,3 +30,7 @@ body {
 .font-signature {
   font-family: var(--font-signature);
 }
+
+section[id] {
+  scroll-margin-top: 90px;
+}

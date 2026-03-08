@@ -47,10 +47,14 @@ export default function Navbar() {
   return (
     <>
       <header
-        style={{ height: "72px" }}
-        className={`fixed left-0 right-0 top-0 z-30 flex items-center px-6 transition-all duration-300 md:px-12 ${
-          scrolled ? "bg-white shadow-sm" : "bg-transparent"
-        }`}
+        style={{
+          height: "72px",
+          backgroundColor: scrolled ? "#FFFFFF" : "transparent",
+          borderBottom: scrolled ? "1px solid #B1D8B9" : "1px solid transparent",
+          boxShadow: scrolled ? "0 4px 10px rgba(0,0,0,0.06)" : "none",
+          transition: "background-color 200ms ease, box-shadow 200ms ease, border-color 200ms ease",
+        }}
+        className="fixed left-0 right-0 top-0 z-30 flex items-center px-6 md:px-12"
       >
         {/* Logo */}
         <a
@@ -61,12 +65,12 @@ export default function Navbar() {
         </a>
 
         {/* Desktop nav */}
-        <nav className="ml-auto hidden items-center gap-8 md:flex">
+        <nav className="ml-auto hidden items-center gap-[37px] md:flex">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-[var(--color-text)] transition-colors hover:text-[var(--color-accent)]"
+              className="text-[18px] text-[var(--color-text)] transition-colors hover:text-[var(--color-accent)]"
             >
               {link.label}
             </a>
