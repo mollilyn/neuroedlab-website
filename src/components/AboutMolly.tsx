@@ -49,12 +49,17 @@ export default function AboutMolly() {
             {content.heading}
           </motion.h2>
 
-          <motion.p
-            {...fadeUp(0.15)}
-            className="font-body-en text-base leading-relaxed text-[var(--color-text)] opacity-80 md:text-lg"
-          >
-            {content.body}
-          </motion.p>
+          <div className="flex flex-col gap-4">
+            {(content.body || "").split("\n\n").map((paragraph, i) => (
+              <motion.p
+                key={i}
+                {...fadeUp(0.15 + i * 0.05)}
+                className="font-body-en text-base leading-relaxed text-[var(--color-text)] opacity-80 md:text-lg"
+              >
+                {paragraph}
+              </motion.p>
+            ))}
+          </div>
         </div>
 
       </div>

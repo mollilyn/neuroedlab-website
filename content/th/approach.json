@@ -1,22 +1,22 @@
 {
-  "heading": "Placeholder heading",
-  "body": "Placeholder body text describing the approach.",
+  "heading": "แนวทางการเรียนรู้ของ NeuroEd Lab",
+  "body": "โปรแกรมการเรียนรู้ของ NeuroEd Lab ถูกออกแบบตามหลักการที่ช่วยสนับสนุนทั้งพัฒนาการทางวิชาการและการเติบโตของเด็กในภาพรวม",
   "pillars": [
     {
-      "title": "Placeholder pillar one",
-      "description": "Placeholder description."
+      "title": "การออกแบบการเรียนรู้เฉพาะบุคคล",
+      "description": "เด็กแต่ละคนมีเส้นทางการเรียนรู้ที่ออกแบบตามความสนใจ จุดแข็ง และช่วงพัฒนาการของตนเอง"
     },
     {
-      "title": "Placeholder pillar two",
-      "description": "Placeholder description."
+      "title": "การเรียนรู้ที่อิงหลักการทำงานของสมอง",
+      "description": "วิธีการสอนอ้างอิงจาก neuroscience และ cognitive science เพื่อสนับสนุนวิธีการเรียนรู้ตามธรรมชาติของเด็ก"
     },
     {
-      "title": "Placeholder pillar three",
-      "description": "Placeholder description."
+      "title": "การเรียนรู้ผ่านโครงการ",
+      "description": "แนวคิดและความรู้ถูกสำรวจผ่านการสนทนา โครงการ และการเชื่อมโยงกับโลกจริง"
     },
     {
-      "title": "Placeholder pillar four",
-      "description": "Placeholder description."
+      "title": "การพัฒนาแบบองค์รวม",
+      "description": "นอกจากด้านวิชาการ เด็กยังพัฒนาความมั่นใจ ทักษะการสื่อสาร ความอยากรู้อยากเห็น และความเป็นอิสระ"
     }
   ]
 }

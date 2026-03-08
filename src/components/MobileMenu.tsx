@@ -2,18 +2,15 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 
-const navLinks = [
-  { label: "Home", href: "#hero" },
-  { label: "NeuroEd Lab", href: "#neuroedlab" },
-  { label: "Approach", href: "#approach" },
-  { label: "Molly", href: "#molly" },
-  { label: "Testimonials", href: "#testimonials" },
-  { label: "Contact", href: "#contact" },
-];
+interface NavLink {
+  label: string;
+  href: string;
+}
 
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
+  navLinks: NavLink[];
   language: string;
   onToggleLanguage: () => void;
 }
@@ -21,6 +18,7 @@ interface MobileMenuProps {
 export default function MobileMenu({
   isOpen,
   onClose,
+  navLinks,
   language,
   onToggleLanguage,
 }: MobileMenuProps) {

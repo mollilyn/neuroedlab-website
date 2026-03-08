@@ -1,22 +1,22 @@
 {
-  "heading": "Placeholder heading",
-  "body": "Placeholder body text describing the approach.",
+  "heading": "How learning works at NeuroEd Lab",
+  "body": "Learning programmes at NeuroEd Lab are guided by principles that support both academic growth and personal development.",
   "pillars": [
     {
-      "title": "Placeholder pillar one",
-      "description": "Placeholder description."
+      "title": "Personalised Learning Design",
+      "description": "Each child follows a learning pathway designed around their interests, strengths, and stage of development."
     },
     {
-      "title": "Placeholder pillar two",
-      "description": "Placeholder description."
+      "title": "Brain-Based Learning",
+      "description": "Learning strategies draw on neuroscience and cognitive science to support how children naturally learn best."
     },
     {
-      "title": "Placeholder pillar three",
-      "description": "Placeholder description."
+      "title": "Project-Based Learning",
+      "description": "Ideas are explored through discussion, projects, and real-world connections that make learning meaningful."
     },
     {
-      "title": "Placeholder pillar four",
-      "description": "Placeholder description."
+      "title": "Holistic Development",
+      "description": "Alongside academics, children build confidence, communication skills, curiosity, and independence."
     }
   ]
 }
