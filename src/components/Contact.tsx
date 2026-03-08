@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Turnstile } from "@marsidev/react-turnstile";
+import type { TurnstileInstance } from "@marsidev/react-turnstile";
 import { useContent } from "@/src/utils/useContent";
 import contactSettings from "@/content/contact-settings.json";
 
@@ -51,6 +53,9 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const turnstileRef = useRef<TurnstileInstance>(null);
 
   const validate = (): boolean => {
     const next: FormErrors = {};
@@ -84,13 +89,15 @@ export default function Contact() {
       const res = await fetch("/api/send-email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, company: honeypot, turnstileToken }),
       });
 
       if (!res.ok) throw new Error("Send failed");
 
       setSubmitted(true);
       setForm({ name: "", email: "", phone: "", message: "" });
+      setTurnstileToken("");
+      turnstileRef.current?.reset();
     } catch {
       setSubmitError(true);
     } finally {
@@ -250,6 +257,26 @@ export default function Contact() {
                   </p>
                 )}
               </div>
+
+              {/* Honeypot — hidden from real users, catches bots */}
+              <input
+                type="text"
+                name="company"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+                autoComplete="off"
+                tabIndex={-1}
+                aria-hidden="true"
+                className="hidden"
+              />
+
+              {/* Turnstile CAPTCHA */}
+              <Turnstile
+                ref={turnstileRef}
+                siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? ""}
+                onSuccess={(token) => setTurnstileToken(token)}
+                onExpire={() => setTurnstileToken("")}
+              />
 
               {/* Submit */}
               <button
