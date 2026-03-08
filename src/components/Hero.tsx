@@ -22,21 +22,22 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="flex min-h-[85vh] flex-col items-center justify-center px-4 pt-24 pb-10 text-center md:px-9 md:pb-24 lg:px-12 lg:pt-[120px] lg:pb-[120px]"
+      className="flex flex-col items-center px-4 pt-24 pb-0 text-center md:px-9 lg:px-12 lg:pt-[120px]"
+      style={{ background: "linear-gradient(180deg, #ffffff 0%, #f5fbf7 100%)" }}
     >
-      {/* Text block — constrained to 820px readable width */}
-      <div className="flex w-full max-w-[1248px] flex-col items-center">
+      {/* Text block — 900px max width */}
+      <div className="flex w-full max-w-[900px] flex-col items-center pb-[42px]">
         {/* Brand title */}
         <motion.p
           {...fadeUp(0)}
-          className="font-headline-en text-3xl font-semibold text-[var(--color-text)] md:text-4xl"
+          className="font-headline-en text-3xl font-semibold text-[var(--color-text)] md:text-4xl lg:text-[2.5rem]"
         >
           NeuroEd Lab
         </motion.p>
 
         <motion.p
           {...fadeUp(0.1)}
-          className="font-signature mt-1 text-2xl text-[var(--color-accent)] md:text-3xl"
+          className="font-signature mt-1 text-2xl text-[var(--color-accent)] md:text-3xl lg:text-[2.1rem]"
         >
           by Molly
         </motion.p>
@@ -44,7 +45,7 @@ export default function Hero() {
         {/* Headline */}
         <motion.h1
           {...fadeUp(0.2)}
-          className="font-headline-en mt-8 text-4xl font-semibold leading-tight text-[var(--color-text)] md:text-5xl"
+          className="font-headline-en mt-8 text-4xl font-semibold leading-tight text-[var(--color-text)] md:text-5xl lg:text-[3.3rem]"
         >
           {hero.headline}
         </motion.h1>
@@ -56,32 +57,38 @@ export default function Hero() {
         >
           {hero.supportingText}
         </motion.p>
+
+        {/* CTA — editorial text link with arrow */}
+        <motion.a
+          {...fadeUp(0.4)}
+          href="#contact"
+          className="group mt-[25px] inline text-base font-medium text-[var(--color-text)] underline decoration-[var(--color-primary)] decoration-[1.5px] underline-offset-4 transition-colors hover:text-[var(--color-accent)] hover:decoration-[var(--color-accent)]"
+        >
+          {hero.cta}{" "}
+          <span
+            aria-hidden="true"
+            className="inline-block transition-transform duration-200 group-hover:translate-x-1"
+          >
+            →
+          </span>
+        </motion.a>
       </div>
 
-      {/* Hero image */}
+      {/* Hero image
+          Mobile:   inset 16px each side, rounded-[16px], 16:9 ratio
+          Desktop:  full viewport width breakout, no radius, no shadow, 21:7 ratio */}
       <motion.div
-        {...fadeUp(0.4)}
-        className="relative mt-10 w-full max-w-[720px] overflow-hidden rounded-[28px]"
-        style={{ aspectRatio: "4 / 3" }}
+        {...fadeUp(0.5)}
+        className="relative w-screen overflow-hidden aspect-[16/9] md:aspect-[21/7]"
       >
         <Image
           src="/images/hero.jpg"
           alt="NeuroEd Lab hero"
           fill
-          className="object-cover"
+          className="object-cover object-center"
           priority
         />
       </motion.div>
-
-      {/* CTA button */}
-      <motion.a
-        {...fadeUp(0.5)}
-        href="#contact"
-        className="mt-10 inline-block rounded-[10px] px-[26px] py-[14px] text-base font-semibold text-white transition-opacity hover:opacity-90"
-        style={{ backgroundColor: "var(--color-accent)" }}
-      >
-        {hero.cta}
-      </motion.a>
     </section>
   );
 }
