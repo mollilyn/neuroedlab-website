@@ -8,10 +8,23 @@ import type { TurnstileInstance } from "@marsidev/react-turnstile";
 import { useContent } from "@/src/utils/useContent";
 import contactSettings from "@/content/contact-settings.json";
 
+interface ContactForm {
+  nameLabel: string;
+  namePlaceholder: string;
+  emailLabel: string;
+  emailPlaceholder: string;
+  phoneLabel: string;
+  phonePlaceholder: string;
+  messageLabel: string;
+  messagePlaceholder: string;
+  submitButton: string;
+}
+
 interface ContactContent {
   heading: string;
   supportingText: string;
   cta: string;
+  form: ContactForm;
 }
 
 interface FormState {
@@ -42,6 +55,18 @@ const LINE_GREEN_DARK = "#3db356";
 export default function Contact() {
   const content = useContent<ContactContent>("contact");
   const lineUrl = contactSettings.contact.line_url;
+
+  const form_labels = content.form ?? {
+    nameLabel: "Name",
+    namePlaceholder: "Your name",
+    emailLabel: "Email",
+    emailPlaceholder: "your@email.com",
+    phoneLabel: "Phone",
+    phonePlaceholder: "+66 00 000 0000",
+    messageLabel: "Message",
+    messagePlaceholder: "Tell us a little about your child and what you are looking for in their learning journey.",
+    submitButton: "Send message",
+  };
 
   const [form, setForm] = useState<FormState>({
     name: "",
@@ -172,7 +197,8 @@ export default function Contact() {
                   htmlFor="name"
                   className="text-sm font-medium text-[var(--color-text)]"
                 >
-                  Name <span className="text-[var(--color-accent)]">*</span>
+                  {form_labels.nameLabel}{" "}
+                  <span className="text-[var(--color-accent)]">*</span>
                 </label>
                 <input
                   id="name"
@@ -180,7 +206,7 @@ export default function Contact() {
                   type="text"
                   value={form.name}
                   onChange={handleChange}
-                  placeholder="Your name"
+                  placeholder={form_labels.namePlaceholder}
                   className={inputClass}
                 />
                 {errors.name && (
@@ -196,7 +222,7 @@ export default function Contact() {
                   htmlFor="email"
                   className="text-sm font-medium text-[var(--color-text)]"
                 >
-                  Email
+                  {form_labels.emailLabel}
                 </label>
                 <input
                   id="email"
@@ -204,7 +230,7 @@ export default function Contact() {
                   type="email"
                   value={form.email}
                   onChange={handleChange}
-                  placeholder="your@email.com"
+                  placeholder={form_labels.emailPlaceholder}
                   className={inputClass}
                 />
               </div>
@@ -215,7 +241,7 @@ export default function Contact() {
                   htmlFor="phone"
                   className="text-sm font-medium text-[var(--color-text)]"
                 >
-                  Phone
+                  {form_labels.phoneLabel}
                 </label>
                 <input
                   id="phone"
@@ -223,7 +249,7 @@ export default function Contact() {
                   type="tel"
                   value={form.phone}
                   onChange={handleChange}
-                  placeholder="+66 00 000 0000"
+                  placeholder={form_labels.phonePlaceholder}
                   className={inputClass}
                 />
                 {errors.contact && (
@@ -239,7 +265,7 @@ export default function Contact() {
                   htmlFor="message"
                   className="text-sm font-medium text-[var(--color-text)]"
                 >
-                  Message{" "}
+                  {form_labels.messageLabel}{" "}
                   <span className="text-[var(--color-accent)]">*</span>
                 </label>
                 <textarea
@@ -248,7 +274,7 @@ export default function Contact() {
                   rows={5}
                   value={form.message}
                   onChange={handleChange}
-                  placeholder="Tell us about your child and what you're looking for…"
+                  placeholder={form_labels.messagePlaceholder}
                   className={`${inputClass} resize-none`}
                 />
                 {errors.message && (
@@ -285,7 +311,7 @@ export default function Contact() {
                 className="mt-1 min-h-[44px] self-start rounded-[10px] px-[26px] py-[14px] text-base font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed"
                 style={{ backgroundColor: "var(--color-accent)" }}
               >
-                {isSubmitting ? "Sending…" : "Send message"}
+                {isSubmitting ? "…" : form_labels.submitButton}
               </button>
 
               {submitError && (
