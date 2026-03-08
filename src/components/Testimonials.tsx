@@ -75,16 +75,6 @@ export default function Testimonials() {
       {/* Carousel */}
       <div className="relative flex items-center justify-center">
 
-        {/* Left arrow — desktop only */}
-        <button
-          onClick={handlePrev}
-          aria-label="Previous testimonial"
-          className="absolute left-3 z-10 hidden h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-md transition-shadow hover:shadow-lg sm:flex md:left-8"
-          style={{ color: "var(--color-text)" }}
-        >
-          <span className="select-none text-2xl leading-none">‹</span>
-        </button>
-
         {/* Slide stage — overflow hidden clips neighbours */}
         <div
           className="relative w-full overflow-hidden"
@@ -128,15 +118,6 @@ export default function Testimonials() {
           })}
         </div>
 
-        {/* Right arrow — desktop only */}
-        <button
-          onClick={handleNext}
-          aria-label="Next testimonial"
-          className="absolute right-3 z-10 hidden h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-md transition-shadow hover:shadow-lg sm:flex md:right-8"
-          style={{ color: "var(--color-text)" }}
-        >
-          <span className="select-none text-2xl leading-none">›</span>
-        </button>
       </div>
 
       {/* Pagination row — dots always visible, arrows visible on mobile only */}
@@ -146,7 +127,7 @@ export default function Testimonials() {
         <button
           onClick={handlePrev}
           aria-label="Previous testimonial"
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-md transition-shadow hover:shadow-lg sm:hidden"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-md transition-shadow hover:shadow-lg"
           style={{ color: "var(--color-text)" }}
         >
           <span className="select-none text-2xl leading-none">‹</span>
@@ -177,7 +158,7 @@ export default function Testimonials() {
         <button
           onClick={handleNext}
           aria-label="Next testimonial"
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-md transition-shadow hover:shadow-lg sm:hidden"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-md transition-shadow hover:shadow-lg"
           style={{ color: "var(--color-text)" }}
         >
           <span className="select-none text-2xl leading-none">›</span>
