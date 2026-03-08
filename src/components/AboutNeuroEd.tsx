@@ -22,10 +22,10 @@ export default function AboutNeuroEd() {
   return (
     <section
       id="neuroedlab"
-      className="py-24 px-6 md:px-12"
+      className="pt-10 pb-12 md:py-24 lg:py-[120px]"
       style={{ backgroundColor: "var(--color-alt-background)" }}
     >
-      <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-16">
+      <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-12 px-4 md:grid-cols-2 md:gap-16 md:px-9 lg:px-12">
 
         {/* Text content */}
         <div className="flex flex-col gap-6">

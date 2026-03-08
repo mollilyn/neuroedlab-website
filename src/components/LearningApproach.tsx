@@ -26,13 +26,13 @@ export default function LearningApproach() {
   return (
     <section
       id="approach"
-      className="py-24 px-6 md:px-12"
+      className="pt-10 pb-12 md:py-24 lg:py-[120px]"
       style={{ backgroundColor: "var(--color-background)" }}
     >
-      <div className="mx-auto max-w-[1200px]">
+      <div className="mx-auto max-w-[1200px] px-4 md:px-9 lg:px-12">
 
         {/* Section header */}
-        <div className="mb-14 flex flex-col items-center gap-4 text-center">
+        <div className="mb-10 flex flex-col items-center gap-4 text-center md:mb-14">
           <motion.h2
             {...fadeUp(0)}
             className="font-headline-en text-3xl font-semibold leading-tight text-[var(--color-text)] md:text-4xl"

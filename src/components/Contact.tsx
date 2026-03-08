@@ -133,10 +133,10 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-24 px-6 md:px-12"
+      className="pt-10 pb-12 md:py-24 lg:py-[120px]"
       style={{ backgroundColor: "var(--color-primary)" }}
     >
-      <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-14 md:grid-cols-2 md:gap-16">
+      <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-14 px-4 md:grid-cols-2 md:gap-16 md:px-9 lg:px-12">
 
         {/* Left column */}
         <div className="flex flex-col gap-8">

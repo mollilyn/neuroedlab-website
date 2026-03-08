@@ -59,23 +59,23 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="py-24"
+      className="pt-10 pb-12 md:py-24 lg:py-[120px]"
       style={{ backgroundColor: "var(--color-background)" }}
     >
-      {/* Heading */}
-      <motion.h2
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="font-headline-en mb-16 text-center text-3xl font-semibold text-[var(--color-text)] md:text-4xl"
-      >
-        Testimonials
-      </motion.h2>
+      {/* Heading — inside container */}
+      <div className="mx-auto max-w-[1200px] px-4 md:px-9 lg:px-12">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="font-headline-en mb-10 text-center text-3xl font-semibold text-[var(--color-text)] md:mb-16 md:text-4xl"
+        >
+          Testimonials
+        </motion.h2>
+      </div>
 
-      {/* Carousel */}
+      {/* Carousel — intentionally full-width so neighbours peek at edges */}
       <div className="relative flex items-center justify-center">
-
-        {/* Slide stage — overflow hidden clips neighbours */}
         <div
           className="relative w-full overflow-hidden"
           style={{ height: "clamp(200px, 30vw, 280px)" }}
@@ -93,8 +93,6 @@ export default function Testimonials() {
             return (
               <motion.div
                 key={slideIndex}
-                // On mobile hide neighbours so only active is shown.
-                // On sm+ they peek in from the edges as intended.
                 className={`absolute top-0 flex h-full items-center justify-center text-center ${
                   isActive ? "" : "hidden sm:flex"
                 }`}
@@ -117,13 +115,11 @@ export default function Testimonials() {
             );
           })}
         </div>
-
       </div>
 
-      {/* Pagination row — dots always visible, arrows visible on mobile only */}
+      {/* Pagination row */}
       <div className="mt-10 flex items-center justify-center gap-6">
 
-        {/* Prev arrow — mobile only */}
         <button
           onClick={handlePrev}
           aria-label="Previous testimonial"
@@ -154,7 +150,6 @@ export default function Testimonials() {
           ))}
         </div>
 
-        {/* Next arrow — mobile only */}
         <button
           onClick={handleNext}
           aria-label="Next testimonial"

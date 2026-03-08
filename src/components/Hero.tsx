@@ -22,38 +22,41 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="flex min-h-[85vh] flex-col items-center justify-center px-6 pt-24 pb-16 text-center md:px-12"
+      className="flex min-h-[85vh] flex-col items-center justify-center px-4 pt-24 pb-10 text-center md:px-9 md:pb-24 lg:px-12 lg:pt-[120px] lg:pb-[120px]"
     >
-      {/* Brand title */}
-      <motion.p
-        {...fadeUp(0)}
-        className="font-headline-en text-3xl font-semibold text-[var(--color-text)] md:text-4xl"
-      >
-        NeuroEd Lab
-      </motion.p>
+      {/* Text block — constrained to 820px readable width */}
+      <div className="flex w-full max-w-[1248px] flex-col items-center">
+        {/* Brand title */}
+        <motion.p
+          {...fadeUp(0)}
+          className="font-headline-en text-3xl font-semibold text-[var(--color-text)] md:text-4xl"
+        >
+          NeuroEd Lab
+        </motion.p>
 
-      <motion.p
-        {...fadeUp(0.1)}
-        className="font-signature mt-1 text-2xl text-[var(--color-accent)] md:text-3xl"
-      >
-        by Molly
-      </motion.p>
+        <motion.p
+          {...fadeUp(0.1)}
+          className="font-signature mt-1 text-2xl text-[var(--color-accent)] md:text-3xl"
+        >
+          by Molly
+        </motion.p>
 
-      {/* Headline */}
-      <motion.h1
-        {...fadeUp(0.2)}
-        className="font-headline-en mt-8 max-w-2xl text-4xl font-semibold leading-tight text-[var(--color-text)] md:text-5xl"
-      >
-        {hero.headline}
-      </motion.h1>
+        {/* Headline */}
+        <motion.h1
+          {...fadeUp(0.2)}
+          className="font-headline-en mt-8 text-4xl font-semibold leading-tight text-[var(--color-text)] md:text-5xl"
+        >
+          {hero.headline}
+        </motion.h1>
 
-      {/* Supporting text */}
-      <motion.p
-        {...fadeUp(0.3)}
-        className="mt-5 max-w-xl text-base leading-relaxed text-[var(--color-text)] opacity-75 md:text-lg"
-      >
-        {hero.supportingText}
-      </motion.p>
+        {/* Supporting text */}
+        <motion.p
+          {...fadeUp(0.3)}
+          className="mt-5 max-w-xl text-base leading-relaxed text-[var(--color-text)] opacity-75 md:text-lg"
+        >
+          {hero.supportingText}
+        </motion.p>
+      </div>
 
       {/* Hero image */}
       <motion.div
