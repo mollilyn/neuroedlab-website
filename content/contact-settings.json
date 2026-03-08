@@ -1,4 +1,6 @@
 {
-  "lineLink": "https://line.me/ti/p/placeholder",
-  "contactEmail": "placeholder@example.com"
+  "contact": {
+    "line_url": "https://line.me/ti/p/7fk9S3R604",
+    "contactEmail": "jack.rowson@outlook.com"
+  }
 }

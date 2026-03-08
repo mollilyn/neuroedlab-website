@@ -34,8 +34,12 @@ const fadeUp = (delay: number) => ({
 const inputClass =
   "w-full rounded-xl border border-[var(--color-text)]/15 bg-white px-4 py-3 text-sm text-[var(--color-text)] placeholder:text-[var(--color-text)]/40 outline-none transition-shadow focus:shadow-[0_0_0_2px_var(--color-primary)]";
 
+const LINE_GREEN = "#4CC764";
+const LINE_GREEN_DARK = "#3db356";
+
 export default function Contact() {
   const content = useContent<ContactContent>("contact");
+  const lineUrl = contactSettings.contact.line_url;
 
   const [form, setForm] = useState<FormState>({
     name: "",
@@ -45,6 +49,8 @@ export default function Contact() {
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validate = (): boolean => {
     const next: FormErrors = {};
@@ -60,15 +66,36 @@ export default function Contact() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-    setErrors((prev) => ({ ...prev, [e.target.name]: undefined, contact: undefined }));
+    setErrors((prev) => ({
+      ...prev,
+      [e.target.name]: undefined,
+      contact: undefined,
+    }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
-    console.log("Contact form submitted:", form);
-    setSubmitted(true);
-    setForm({ name: "", email: "", phone: "", message: "" });
+
+    setIsSubmitting(true);
+    setSubmitError(false);
+
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (!res.ok) throw new Error("Send failed");
+
+      setSubmitted(true);
+      setForm({ name: "", email: "", phone: "", message: "" });
+    } catch {
+      setSubmitError(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -79,7 +106,7 @@ export default function Contact() {
     >
       <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-14 md:grid-cols-2 md:gap-16">
 
-        {/* Left column — invitation */}
+        {/* Left column */}
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-4">
             <motion.h2
@@ -97,28 +124,25 @@ export default function Contact() {
             </motion.p>
           </div>
 
-          {/* LINE button */}
+          {/* LINE CTA button */}
           <motion.a
             {...fadeUp(0.25)}
-            href={contactSettings.lineLink}
+            href={lineUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block self-start rounded-[10px] px-[26px] py-[14px] text-base font-semibold text-white transition-opacity hover:opacity-90"
-            style={{ backgroundColor: "var(--color-accent)" }}
+            aria-label="Chat on LINE"
+            className="inline-flex items-center self-start gap-[10px] rounded-[12px] px-6 py-[6px] text-base font-semibold text-white"
+            style={{ backgroundColor: LINE_GREEN }}
+            whileHover={{
+              scale: 1.02,
+              backgroundColor: LINE_GREEN_DARK,
+            }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
           >
-            {content.cta}
+            <Image src="/images/line-logo.png" alt="LINE" width={55} height={55} />
+            Chat on LINE
           </motion.a>
-
-          {/* QR code */}
-          <motion.div {...fadeUp(0.35)}>
-            <Image
-              src="/images/line-qr.jpg"
-              alt="LINE QR code"
-              width={160}
-              height={160}
-              className="rounded-xl"
-            />
-          </motion.div>
         </div>
 
         {/* Right column — form */}
@@ -126,7 +150,7 @@ export default function Contact() {
           {submitted ? (
             <div className="flex h-full items-center justify-center rounded-2xl bg-white p-10 text-center shadow-sm">
               <p className="font-headline-en text-xl font-semibold text-[var(--color-text)]">
-                Thank you! We will be in touch soon.
+                Your message has been sent. Molly will get back to you soon.
               </p>
             </div>
           ) : (
@@ -153,7 +177,9 @@ export default function Contact() {
                   className={inputClass}
                 />
                 {errors.name && (
-                  <p className="text-xs text-[var(--color-accent)]">{errors.name}</p>
+                  <p className="text-xs text-[var(--color-accent)]">
+                    {errors.name}
+                  </p>
                 )}
               </div>
 
@@ -194,7 +220,9 @@ export default function Contact() {
                   className={inputClass}
                 />
                 {errors.contact && (
-                  <p className="text-xs text-[var(--color-accent)]">{errors.contact}</p>
+                  <p className="text-xs text-[var(--color-accent)]">
+                    {errors.contact}
+                  </p>
                 )}
               </div>
 
@@ -204,7 +232,8 @@ export default function Contact() {
                   htmlFor="message"
                   className="text-sm font-medium text-[var(--color-text)]"
                 >
-                  Message <span className="text-[var(--color-accent)]">*</span>
+                  Message{" "}
+                  <span className="text-[var(--color-accent)]">*</span>
                 </label>
                 <textarea
                   id="message"
@@ -216,18 +245,27 @@ export default function Contact() {
                   className={`${inputClass} resize-none`}
                 />
                 {errors.message && (
-                  <p className="text-xs text-[var(--color-accent)]">{errors.message}</p>
+                  <p className="text-xs text-[var(--color-accent)]">
+                    {errors.message}
+                  </p>
                 )}
               </div>
 
               {/* Submit */}
               <button
                 type="submit"
-                className="mt-1 self-start rounded-[10px] px-[26px] py-[14px] text-base font-semibold text-white transition-opacity hover:opacity-90"
+                disabled={isSubmitting}
+                className="mt-1 min-h-[44px] self-start rounded-[10px] px-[26px] py-[14px] text-base font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed"
                 style={{ backgroundColor: "var(--color-accent)" }}
               >
-                Send message
+                {isSubmitting ? "Sending…" : "Send message"}
               </button>
+
+              {submitError && (
+                <p className="text-sm text-[var(--color-accent)]">
+                  Something went wrong. Please try again.
+                </p>
+              )}
             </form>
           )}
         </motion.div>
