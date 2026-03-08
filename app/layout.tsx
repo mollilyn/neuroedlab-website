@@ -7,6 +7,7 @@ import {
   Noto_Sans_Thai,
 } from "next/font/google";
 import { LanguageProvider } from "@/src/context/LanguageContext";
+import GoogleAnalytics from "@/src/components/GoogleAnalytics";
 import "./globals.css";
 
 const robotoSlab = Roboto_Slab({
@@ -51,6 +52,7 @@ export default function RootLayout({
         className={`${robotoSlab.variable} ${notoSans.variable} ${courgette.variable} ${notoSerifThai.variable} ${notoSansThai.variable}`}
       >
         <LanguageProvider>{children}</LanguageProvider>
+        <GoogleAnalytics />
       </body>
     </html>
   );
