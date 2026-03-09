@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, type Transition } from "framer-motion";
 import { Turnstile } from "@marsidev/react-turnstile";
 import type { TurnstileInstance } from "@marsidev/react-turnstile";
 import { useContent } from "@/src/utils/useContent";
@@ -40,12 +40,10 @@ interface FormErrors {
   message?: string;
 }
 
-const fadeUp = (delay: number) => ({
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.6, ease: "easeOut", delay },
-});
+const fadeUp = (delay = 0) => {
+  const transition: Transition = { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay };
+  return { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition };
+};
 
 const inputClass =
   "w-full rounded-xl border border-[var(--color-text)]/15 bg-white px-4 py-3 text-sm text-[var(--color-text)] placeholder:text-[var(--color-text)]/40 outline-none transition-shadow focus:shadow-[0_0_0_2px_var(--color-primary)]";
@@ -172,10 +170,10 @@ export default function Contact() {
             }}
             whileTap={{ scale: 0.97 }}
             transition={{
-              opacity: { duration: 0.6, ease: "easeOut", delay: 0.25 },
-              y: { duration: 0.6, ease: "easeOut", delay: 0.25 },
-              scale: { duration: 0.15, ease: "easeOut" },
-              backgroundColor: { duration: 0.15, ease: "easeOut" },
+              opacity: { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.25 },
+              y: { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.25 },
+              scale: { duration: 0.15, ease: [0.16, 1, 0.3, 1] },
+              backgroundColor: { duration: 0.15, ease: [0.16, 1, 0.3, 1] },
             }}
           >
             <Image src="/images/line-logo.png" alt="LINE" width={55} height={55} />

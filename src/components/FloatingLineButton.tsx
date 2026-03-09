@@ -26,7 +26,7 @@ export default function FloatingLineButton() {
         filter: "drop-shadow(0 6px 14px rgba(0,0,0,0.25))",
       }}
       whileTap={{ scale: 0.96 }}
-      transition={{ duration: 0.16, ease: "easeOut" }}
+      transition={{ duration: 0.16, ease: [0.16, 1, 0.3, 1] }}
     >
       <Image
         src="/images/line-logo.png"

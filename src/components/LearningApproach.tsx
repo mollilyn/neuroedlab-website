@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Transition } from "framer-motion";
 import { useContent } from "@/src/utils/useContent";
 
 interface Pillar {
@@ -14,12 +14,10 @@ interface ApproachContent {
   pillars: Pillar[];
 }
 
-const fadeUp = (delay: number) => ({
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.6, ease: "easeOut", delay },
-});
+const fadeUp = (delay = 0) => {
+  const transition: Transition = { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay };
+  return { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition };
+};
 
 export default function LearningApproach() {
   const content = useContent<ApproachContent>("approach");
@@ -57,7 +55,7 @@ export default function LearningApproach() {
               {...fadeUp(0.1 * (index + 1))}
               transition={{
                 opacity: { duration: 0.6, delay: 0.1 * (index + 1) },
-                y: { duration: 0.25, ease: "easeOut", delay: 0.1 * (index + 1) },
+                y: { duration: 0.25, ease: [0.16, 1, 0.3, 1], delay: 0.1 * (index + 1) },
                 boxShadow: { duration: 0, delay: 0 },
               }}
               className="rounded-[12px] border bg-white px-5 py-[8px] md:p-7"
@@ -66,7 +64,7 @@ export default function LearningApproach() {
                 y: -3,
                 boxShadow: "0 8px 24px rgba(var(--color-primary-rgb), 0.35)",
                 transition: {
-                  y: { duration: 0.2, ease: "easeOut" },
+                  y: { duration: 0.2, ease: [0.16, 1, 0.3, 1] },
                   boxShadow: { duration: 0 },
                 },
               }}

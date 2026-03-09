@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, type Transition } from "framer-motion";
 import { useContent } from "@/src/utils/useContent";
 
 interface HeroContent {
@@ -11,11 +11,10 @@ interface HeroContent {
   cta: string;
 }
 
-const fadeUp = (delay: number) => ({
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, delay },
-});
+const fadeUp = (delay = 0) => {
+  const transition: Transition = { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay };
+  return { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 }, transition };
+};
 
 export default function Hero() {
   const hero = useContent<HeroContent>("hero");

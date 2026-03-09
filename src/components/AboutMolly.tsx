@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, type Transition } from "framer-motion";
 import { useContent } from "@/src/utils/useContent";
 
 interface MollyContent {
@@ -9,12 +9,10 @@ interface MollyContent {
   body: string;
 }
 
-const fadeUp = (delay: number) => ({
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.6, ease: "easeOut", delay },
-});
+const fadeUp = (delay = 0) => {
+  const transition: Transition = { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay };
+  return { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition };
+};
 
 export default function AboutMolly() {
   const content = useContent<MollyContent>("molly");

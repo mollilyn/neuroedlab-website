@@ -68,7 +68,7 @@ export default function Testimonials() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="font-headline-en mb-5 text-center text-3xl font-semibold text-[var(--color-text)] md:mb-16 md:text-4xl"
         >
           Testimonials
@@ -80,7 +80,7 @@ export default function Testimonials() {
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
       >
       <div className="relative flex items-center justify-center">
         <div
