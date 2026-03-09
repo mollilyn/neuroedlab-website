@@ -68,7 +68,7 @@ export default function Testimonials() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="font-headline-en mb-10 text-center text-3xl font-semibold text-[var(--color-text)] md:mb-16 md:text-4xl"
+          className="font-headline-en mb-5 text-center text-3xl font-semibold text-[var(--color-text)] md:mb-16 md:text-4xl"
         >
           Testimonials
         </motion.h2>
@@ -118,7 +118,7 @@ export default function Testimonials() {
       </div>
 
       {/* Pagination row */}
-      <div className="mt-10 flex items-center justify-center gap-6">
+      <div className="mt-4 flex items-center justify-center gap-6 md:mt-10">
 
         <button
           onClick={handlePrev}
