@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useContent } from "@/src/utils/useContent";
 
 interface HeroContent {
@@ -18,6 +18,10 @@ const fadeUp = (delay: number) => ({
 
 export default function Hero() {
   const hero = useContent<HeroContent>("hero");
+
+  // Parallax: 100px scroll → ~12px image movement, clamped at 80px
+  const { scrollY } = useScroll();
+  const imageY = useTransform(scrollY, [0, 667], [0, -80]);
 
   return (
     <section
@@ -85,13 +89,19 @@ export default function Hero() {
           maskImage: "linear-gradient(to bottom, transparent 0%, black 18%)",
         }}
       >
-        <Image
-          src="/images/hero.jpg"
-          alt="NeuroEd Lab hero"
-          fill
-          className="object-cover object-center"
-          priority
-        />
+        {/* Parallax wrapper — extends 80px below container so image never exposes background */}
+        <motion.div
+          className="absolute left-0 right-0 top-0"
+          style={{ bottom: "-80px", y: imageY }}
+        >
+          <Image
+            src="/images/hero.jpg"
+            alt="NeuroEd Lab hero"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+        </motion.div>
       </motion.div>
     </section>
   );
