@@ -3,19 +3,22 @@
 import Image from "next/image";
 import { motion, type Transition } from "framer-motion";
 import { useContent } from "@/src/utils/useContent";
+import { useIsDesktop } from "@/src/utils/useIsDesktop";
 
 interface MollyContent {
   heading: string;
   body: string;
 }
 
-const fadeUp = (delay = 0) => {
-  const transition: Transition = { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay };
-  return { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition };
-};
-
 export default function AboutMolly() {
   const content = useContent<MollyContent>("molly");
+  const isDesktop = useIsDesktop();
+
+  const fadeUp = (delay = 0) => {
+    if (!isDesktop) return {};
+    const transition: Transition = { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay };
+    return { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition };
+  };
 
   return (
     <section

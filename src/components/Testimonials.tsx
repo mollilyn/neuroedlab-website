@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { useContent } from "@/src/utils/useContent";
+import { useIsDesktop } from "@/src/utils/useIsDesktop";
 
 interface Testimonial {
   quote: string;
@@ -22,6 +23,10 @@ const SLIDE_STEP = SLIDE_WIDTH + SLIDE_GAP;
 export default function Testimonials() {
   const content = useContent<TestimonialsContent>("testimonials");
   const items: Testimonial[] = Array.isArray(content?.items) ? content.items : [];
+  const isDesktop = useIsDesktop();
+  const scrollAnim = isDesktop
+    ? { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true as const } }
+    : {};
   const total = items.length;
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -70,9 +75,7 @@ export default function Testimonials() {
       {/* Heading — inside container */}
       <div className="mx-auto max-w-[1200px] px-4 md:px-9 lg:px-12">
         <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...scrollAnim}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="font-headline-en mb-5 text-center text-3xl font-semibold text-[var(--color-text)] md:mb-[58px] md:text-4xl"
         >
@@ -82,9 +85,7 @@ export default function Testimonials() {
 
       {/* Carousel — intentionally full-width so neighbours peek at edges */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        {...scrollAnim}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
       >
       <div className="relative flex items-center justify-center">

@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform, type Transition } from "framer-motion";
 import { useContent } from "@/src/utils/useContent";
+import { useIsDesktop } from "@/src/utils/useIsDesktop";
 
 interface HeroContent {
   headline: string;
@@ -18,18 +18,11 @@ const fadeUp = (delay = 0) => {
 
 export default function Hero() {
   const hero = useContent<HeroContent>("hero");
+  const isDesktop = useIsDesktop();
 
   // Parallax: 100px scroll → ~12px image movement, clamped at 80px (desktop only)
   const { scrollY } = useScroll();
   const imageY = useTransform(scrollY, [0, 667], [0, -80]);
-  const [isDesktop, setIsDesktop] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)");
-    setIsDesktop(mq.matches);
-    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
-    mq.addEventListener("change", handler);
-    return () => mq.removeEventListener("change", handler);
-  }, []);
 
   return (
     <section

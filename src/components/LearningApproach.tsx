@@ -2,6 +2,7 @@
 
 import { motion, type Transition } from "framer-motion";
 import { useContent } from "@/src/utils/useContent";
+import { useIsDesktop } from "@/src/utils/useIsDesktop";
 
 interface Pillar {
   title: string;
@@ -14,13 +15,15 @@ interface ApproachContent {
   pillars: Pillar[];
 }
 
-const fadeUp = (delay = 0) => {
-  const transition: Transition = { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay };
-  return { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition };
-};
-
 export default function LearningApproach() {
   const content = useContent<ApproachContent>("approach");
+  const isDesktop = useIsDesktop();
+
+  const fadeUp = (delay = 0) => {
+    if (!isDesktop) return {};
+    const transition: Transition = { duration: 0.6, ease: [0.16, 1, 0.3, 1], delay };
+    return { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true }, transition };
+  };
 
   return (
     <section
