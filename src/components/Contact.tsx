@@ -133,24 +133,24 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="pt-10 pb-12 md:py-24 lg:py-[120px]"
+      className="pt-10 pb-8 md:pt-24 md:pb-12 lg:pt-[120px] lg:pb-[60px]"
       style={{ backgroundColor: "var(--color-primary)" }}
     >
-      <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-14 px-4 md:grid-cols-2 md:gap-16 md:px-9 lg:px-12">
+      <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-6 px-4 md:grid-cols-2 md:gap-16 md:px-9 lg:px-12">
 
         {/* Left column */}
-        <div className="flex flex-col gap-8">
-          <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-5 md:gap-8">
+          <div className="flex flex-col gap-3 md:gap-4">
             <motion.h2
               {...fadeUp(0)}
-              className="font-headline-en text-3xl font-semibold leading-tight text-[var(--color-text)] md:text-4xl"
+              className="font-headline-en text-center text-3xl font-semibold leading-tight text-[var(--color-text)] md:text-left md:text-4xl"
             >
               {content.heading}
             </motion.h2>
 
             <motion.p
               {...fadeUp(0.15)}
-              className="font-body-en text-base leading-relaxed text-[var(--color-text)] opacity-75 md:text-lg"
+              className="font-body-en text-center text-base leading-relaxed text-[var(--color-text)] opacity-75 md:text-left md:text-lg"
             >
               {content.supportingText}
             </motion.p>
@@ -163,7 +163,7 @@ export default function Contact() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Chat on LINE"
-            className="inline-flex items-center self-start gap-[10px] rounded-[12px] px-6 py-[6px] text-base font-semibold text-white"
+            className="inline-flex items-center self-center gap-[10px] rounded-[12px] px-6 py-[6px] text-base font-semibold text-white md:self-start"
             style={{ backgroundColor: LINE_GREEN }}
             whileHover={{
               scale: 1.02,
@@ -189,7 +189,7 @@ export default function Contact() {
             <form
               onSubmit={handleSubmit}
               noValidate
-              className="flex flex-col gap-5 rounded-2xl bg-white p-8 shadow-sm"
+              className="flex flex-col gap-4 rounded-2xl bg-white p-8 shadow-sm md:gap-5"
             >
               {/* Name */}
               <div className="flex flex-col gap-1.5">
@@ -308,7 +308,7 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="mt-1 min-h-[44px] self-start rounded-[10px] px-[26px] py-[14px] text-base font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed"
+                className="mt-1 min-h-[44px] self-center rounded-[10px] px-[26px] py-[14px] text-base font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed md:self-start"
                 style={{ backgroundColor: "var(--color-accent)" }}
               >
                 {isSubmitting ? "…" : form_labels.submitButton}
