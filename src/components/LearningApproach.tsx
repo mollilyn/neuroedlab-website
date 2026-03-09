@@ -50,16 +50,29 @@ export default function LearningApproach() {
           </motion.p>
         </div>
 
-        {/* Pillar cards */}
-        <div className="grid grid-cols-1 gap-[14px] md:grid-cols-2 md:gap-8">
+        {/* Pillar cards — parent handles stagger so individual cards have no delay in their transition */}
+        <motion.div
+          className="grid grid-cols-1 gap-[14px] md:grid-cols-2 md:gap-8"
+          {...(isDesktop ? {
+            initial: "hidden",
+            whileInView: "visible",
+            viewport: { once: true },
+            variants: { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } },
+          } : {})}
+        >
           {content.pillars?.map((pillar, index) => (
             <motion.div
               key={index}
-              {...fadeUp(0.1 * (index + 1))}
+              {...(isDesktop ? {
+                variants: {
+                  hidden: { opacity: 0, y: 30 },
+                  visible: { opacity: 1, y: 0 },
+                },
+              } : {})}
               transition={{
-                opacity: { duration: 0.6, delay: 0.1 * (index + 1) },
-                y: { duration: 0.25, ease: [0.16, 1, 0.3, 1], delay: 0.1 * (index + 1) },
-                boxShadow: { duration: 0, delay: 0 },
+                opacity: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+                y: { duration: 0.25, ease: [0.16, 1, 0.3, 1] },
+                boxShadow: { duration: 0 },
               }}
               className="rounded-[12px] border bg-white px-5 py-[8px] md:p-7"
               style={{ borderColor: "var(--color-primary)" }}
@@ -88,7 +101,7 @@ export default function LearningApproach() {
               </p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
       </div>
     </section>
