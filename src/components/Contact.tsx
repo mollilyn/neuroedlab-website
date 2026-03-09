@@ -43,7 +43,7 @@ interface FormErrors {
 
 
 const inputClass =
-  "w-full rounded-xl border border-[var(--color-text)]/15 bg-white px-4 py-3 text-sm text-[var(--color-text)] placeholder:text-[var(--color-text)]/40 outline-none transition-shadow focus:shadow-[0_0_0_2px_var(--color-primary)]";
+  "w-full rounded-xl border border-[var(--color-text)]/15 bg-[var(--color-background)] px-4 py-3 text-sm text-[var(--color-text)] placeholder:text-[var(--color-text)]/40 outline-none transition-shadow focus:shadow-[0_0_0_2px_var(--color-primary)]";
 
 const LINE_GREEN = "#4CC764";
 const LINE_GREEN_DARK = "#3db356";
@@ -188,7 +188,7 @@ export default function Contact() {
         {/* Right column — form */}
         <motion.div {...fadeUp(0.1)}>
           {submitted ? (
-            <div className="flex h-full items-center justify-center rounded-2xl bg-white p-10 text-center shadow-sm">
+            <div className="flex h-full items-center justify-center rounded-2xl bg-[var(--color-background)] p-10 text-center shadow-sm">
               <p className="font-headline-en text-xl font-semibold text-[var(--color-text)]">
                 Your message has been sent. Molly will get back to you soon.
               </p>
@@ -197,7 +197,7 @@ export default function Contact() {
             <form
               onSubmit={handleSubmit}
               noValidate
-              className="flex flex-col gap-4 rounded-2xl bg-white p-8 shadow-sm md:gap-5"
+              className="flex flex-col gap-4 rounded-2xl bg-[var(--color-background)] p-8 shadow-sm md:gap-5"
             >
               {/* Name */}
               <div className="flex flex-col gap-1.5">

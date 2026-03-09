@@ -38,7 +38,7 @@ export default function MobileMenu({
 
           {/* Drawer */}
           <motion.nav
-            className="fixed right-0 top-0 z-50 flex h-full w-4/5 max-w-sm flex-col bg-white px-8 py-8 shadow-xl"
+            className="fixed right-0 top-0 z-50 flex h-full w-4/5 max-w-sm flex-col bg-[var(--color-background)] px-8 py-8 shadow-xl"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}

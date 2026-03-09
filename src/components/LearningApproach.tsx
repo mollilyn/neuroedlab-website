@@ -70,7 +70,7 @@ export default function LearningApproach() {
                 y: { duration: 0.25, ease: [0.16, 1, 0.3, 1] },
                 boxShadow: { duration: 0 },
               }}
-              className="rounded-[12px] border bg-white px-5 py-[8px] md:p-7"
+              className="rounded-[12px] border bg-[var(--color-background)] px-5 py-[8px] md:p-7"
               style={{ borderColor: "var(--color-primary)" }}
               whileHover={{
                 y: -3,

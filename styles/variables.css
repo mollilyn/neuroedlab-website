@@ -1,10 +1,45 @@
+/*
+ * ─────────────────────────────────────────────────────────────────────────────
+ *  SITE COLOUR PALETTE — edit here to retheme the entire website
+ *  This is the single source of truth for all colours.
+ *  Every component references these variables; nothing is hardcoded elsewhere.
+ * ─────────────────────────────────────────────────────────────────────────────
+ *
+ *  --color-primary        Sage green — used for borders, dividers, accents,
+ *                         card hover shadows, and the language toggle.
+ *
+ *  --color-primary-rgb    The same sage green as comma-separated R,G,B values.
+ *                         Required for rgba() usage (e.g. card hover shadow).
+ *                         Keep in sync with --color-primary.
+ *
+ *  --color-accent         Warm orange — used for the "by Molly" signature,
+ *                         CTA link underline hover, and the submit button.
+ *
+ *  --color-background     Main page / card / panel background (white).
+ *                         Used for section backgrounds, form cards,
+ *                         input fields, carousel arrows, and the mobile menu.
+ *
+ *  --color-alt-background Warm off-white — used for the footer and any
+ *                         sections that need a subtle background contrast.
+ *
+ *  --color-alt-background-rgb  Same as above as R,G,B — needed for rgba().
+ *                              Keep in sync with --color-alt-background.
+ *
+ *  --color-text           Near-black — base text colour throughout the site.
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+
 :root {
-  --color-primary: #B1D8B9;
-  --color-primary-rgb: 177, 216, 185;
-  --color-primary-subtle: color-mix(in srgb, var(--color-primary) 20%, var(--color-background));
-  --color-accent: #FB6401;
-  --color-background: #FFFFFF;
-  --color-alt-background: #F0EEE9;
-  --color-alt-background-rgb: 240, 238, 233;
-  --color-text: #3A3A3A;
+  --color-primary:             #B1D8B9;
+  --color-primary-rgb:         177, 216, 185;
+  --color-primary-subtle:      color-mix(in srgb, var(--color-primary) 20%, var(--color-background));
+
+  --color-accent:              #FB6401;
+
+  --color-background:          #FFFFFF;
+
+  --color-alt-background:      #F0EEE9;
+  --color-alt-background-rgb:  240, 238, 233;
+
+  --color-text:                #3A3A3A;
 }

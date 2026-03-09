@@ -151,7 +151,7 @@ export default function Testimonials() {
         <button
           onClick={handlePrev}
           aria-label="Previous testimonial"
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-md transition-shadow hover:shadow-lg"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-background)] shadow-md transition-shadow hover:shadow-lg"
           style={{ color: "var(--color-text)" }}
         >
           <span className="select-none text-2xl leading-none">‹</span>
@@ -181,7 +181,7 @@ export default function Testimonials() {
         <button
           onClick={handleNext}
           aria-label="Next testimonial"
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white shadow-md transition-shadow hover:shadow-lg"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--color-background)] shadow-md transition-shadow hover:shadow-lg"
           style={{ color: "var(--color-text)" }}
         >
           <span className="select-none text-2xl leading-none">›</span>
