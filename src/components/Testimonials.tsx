@@ -8,6 +8,11 @@ interface Testimonial {
   quote: string;
 }
 
+interface TestimonialsContent {
+  heading: string;
+  items: Testimonial[];
+}
+
 const AUTO_INTERVAL = 6000;
 const PAUSE_DURATION = 8000;
 const SLIDE_WIDTH = 720;
@@ -15,8 +20,8 @@ const SLIDE_GAP = 120;
 const SLIDE_STEP = SLIDE_WIDTH + SLIDE_GAP;
 
 export default function Testimonials() {
-  const testimonials = useContent<Testimonial[]>("testimonials");
-  const items: Testimonial[] = Array.isArray(testimonials) ? testimonials : [];
+  const content = useContent<TestimonialsContent>("testimonials");
+  const items: Testimonial[] = Array.isArray(content?.items) ? content.items : [];
   const total = items.length;
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -59,7 +64,7 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="pt-10 pb-12 md:py-24 lg:py-[120px]"
+      className="pt-10 pb-12 md:py-[86px] lg:py-[108px]"
       style={{ backgroundColor: "var(--color-background)" }}
     >
       {/* Heading — inside container */}
@@ -69,9 +74,9 @@ export default function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="font-headline-en mb-5 text-center text-3xl font-semibold text-[var(--color-text)] md:mb-16 md:text-4xl"
+          className="font-headline-en mb-5 text-center text-3xl font-semibold text-[var(--color-text)] md:mb-[58px] md:text-4xl"
         >
-          Testimonials
+          {content.heading}
         </motion.h2>
       </div>
 
@@ -84,9 +89,23 @@ export default function Testimonials() {
       >
       <div className="relative flex items-center justify-center">
         <div
-          className="relative w-full overflow-hidden"
-          style={{ height: "clamp(200px, 30vw, 280px)" }}
+          className="relative w-full"
+          style={{ overflowX: "hidden" }}
         >
+          {/* Invisible sizer — mirrors active quote in normal flow to set container height */}
+          <div
+            className="invisible mx-auto text-center"
+            style={{
+              width: `min(${SLIDE_WIDTH}px, 90vw)`,
+              padding: "2rem 0",
+            }}
+            aria-hidden="true"
+          >
+            <p className="font-body-en text-xl leading-relaxed md:text-2xl">
+              &ldquo;{items[activeIndex]?.quote}&rdquo;
+            </p>
+          </div>
+
           {items.map((testimonial, slideIndex) => {
             let offset = slideIndex - activeIndex;
 
@@ -100,7 +119,7 @@ export default function Testimonials() {
             return (
               <motion.div
                 key={slideIndex}
-                className={`absolute top-0 flex h-full items-center justify-center text-center ${
+                className={`absolute inset-0 flex items-center justify-center text-center ${
                   isActive ? "" : "hidden sm:flex"
                 }`}
                 style={{
@@ -125,7 +144,7 @@ export default function Testimonials() {
       </div>
 
       {/* Pagination row */}
-      <div className="mt-4 flex items-center justify-center gap-6 md:mt-10">
+      <div className="mt-4 flex items-center justify-center gap-6 md:mt-9">
 
 
         <button
