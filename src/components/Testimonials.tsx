@@ -66,8 +66,9 @@ export default function Testimonials() {
       <div className="mx-auto max-w-[1200px] px-4 md:px-9 lg:px-12">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="font-headline-en mb-5 text-center text-3xl font-semibold text-[var(--color-text)] md:mb-16 md:text-4xl"
         >
           Testimonials
@@ -75,6 +76,12 @@ export default function Testimonials() {
       </div>
 
       {/* Carousel — intentionally full-width so neighbours peek at edges */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
+      >
       <div className="relative flex items-center justify-center">
         <div
           className="relative w-full overflow-hidden"
@@ -120,6 +127,7 @@ export default function Testimonials() {
       {/* Pagination row */}
       <div className="mt-4 flex items-center justify-center gap-6 md:mt-10">
 
+
         <button
           onClick={handlePrev}
           aria-label="Previous testimonial"
@@ -160,6 +168,7 @@ export default function Testimonials() {
         </button>
 
       </div>
+      </motion.div>
     </section>
   );
 }

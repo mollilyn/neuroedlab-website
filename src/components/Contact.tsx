@@ -42,8 +42,9 @@ interface FormErrors {
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, delay },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6, ease: "easeOut", delay },
 });
 
 const inputClass =
@@ -170,7 +171,12 @@ export default function Contact() {
               backgroundColor: LINE_GREEN_DARK,
             }}
             whileTap={{ scale: 0.97 }}
-            transition={{ duration: 0.15, ease: "easeOut" }}
+            transition={{
+              opacity: { duration: 0.6, ease: "easeOut", delay: 0.25 },
+              y: { duration: 0.6, ease: "easeOut", delay: 0.25 },
+              scale: { duration: 0.15, ease: "easeOut" },
+              backgroundColor: { duration: 0.15, ease: "easeOut" },
+            }}
           >
             <Image src="/images/line-logo.png" alt="LINE" width={55} height={55} />
             Chat on LINE
