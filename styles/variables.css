@@ -1,5 +1,5 @@
 :root {
-  --color-primary: #B1D8B9;
+  --color-primary: #FF0000;
   --color-primary-rgb: 177, 216, 185;
   --color-primary-subtle: color-mix(in srgb, var(--color-primary) 20%, var(--color-background));
   --color-accent: #FB6401;
