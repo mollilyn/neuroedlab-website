@@ -111,6 +111,9 @@ export default function Hero() {
           />
         </motion.div>
       </motion.div>
+
+      {/* Sage divider — separates hero image from next section */}
+      <div className="w-screen" style={{ height: "2px", backgroundColor: "var(--color-primary)" }} />
     </section>
   );
 }
