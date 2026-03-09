@@ -62,7 +62,7 @@ export default function Hero() {
         <motion.a
           {...fadeUp(0.4)}
           href="#contact"
-          className="group mt-[25px] inline text-base font-medium text-[var(--color-text)] underline decoration-[var(--color-primary)] decoration-[1.5px] underline-offset-4 transition-colors hover:text-[var(--color-accent)] hover:decoration-[var(--color-accent)]"
+          className="group mt-[25px] inline text-[18px] font-medium md:text-[20px] text-[var(--color-text)] underline decoration-[var(--color-primary)] decoration-[1.5px] underline-offset-4 transition-colors hover:text-[var(--color-accent)] hover:decoration-[var(--color-accent)]"
         >
           {hero.cta}{" "}
           <span
@@ -75,11 +75,15 @@ export default function Hero() {
       </div>
 
       {/* Hero image
-          Mobile:   inset 16px each side, rounded-[16px], 16:9 ratio
-          Desktop:  full viewport width breakout, no radius, no shadow, 21:7 ratio */}
+          Mobile:   fixed 230px height, full width
+          Desktop:  full viewport width, 21:7 ratio */}
       <motion.div
         {...fadeUp(0.5)}
-        className="relative w-screen overflow-hidden aspect-[16/9] md:aspect-[21/7]"
+        className="relative w-screen overflow-hidden h-[260px] md:h-auto md:aspect-[21/7]"
+        style={{
+          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 18%)",
+          maskImage: "linear-gradient(to bottom, transparent 0%, black 18%)",
+        }}
       >
         <Image
           src="/images/hero.jpg"
