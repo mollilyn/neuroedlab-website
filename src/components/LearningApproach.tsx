@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Transition } from "framer-motion";
+import { motion, type Transition, type Easing } from "framer-motion";
 import { useContent } from "@/src/utils/useContent";
 import { useIsDesktop } from "@/src/utils/useIsDesktop";
 
@@ -50,27 +50,23 @@ export default function LearningApproach() {
           </motion.p>
         </div>
 
-        {/* Pillar cards — parent handles stagger so individual cards have no delay in their transition */}
-        <motion.div
-          className="grid grid-cols-1 gap-[14px] md:grid-cols-2 md:gap-8"
-          {...(isDesktop ? {
-            initial: "hidden",
-            whileInView: "visible",
-            viewport: { once: true },
-            variants: { hidden: {}, visible: { transition: { staggerChildren: 0.1 } } },
-          } : {})}
-        >
+        {/* Pillar cards */}
+        <div className="grid grid-cols-1 gap-[14px] md:grid-cols-2 md:gap-8">
           {content.pillars?.map((pillar, index) => (
             <motion.div
               key={index}
               {...(isDesktop ? {
-                variants: {
-                  hidden: { opacity: 0, y: 30 },
-                  visible: { opacity: 1, y: 0 },
+                initial: { opacity: 0, y: 30 },
+                whileInView: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    opacity: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as Easing, delay: 0.1 * (index + 1) },
+                  },
                 },
+                viewport: { once: true },
               } : {})}
               transition={{
-                opacity: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
                 y: { duration: 0.25, ease: [0.16, 1, 0.3, 1] },
                 boxShadow: { duration: 0 },
               }}
@@ -101,7 +97,7 @@ export default function LearningApproach() {
               </p>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
       </div>
     </section>
