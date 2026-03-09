@@ -49,8 +49,8 @@ export default function Navbar() {
       <header
         style={{
           height: "72px",
-          backgroundColor: scrolled ? "#FFFFFF" : "transparent",
-          borderBottom: scrolled ? "1px solid #B1D8B9" : "1px solid transparent",
+          backgroundColor: scrolled ? "var(--color-background)" : "transparent",
+          borderBottom: scrolled ? "1px solid var(--color-primary)" : "1px solid transparent",
           boxShadow: scrolled ? "0 4px 10px rgba(0,0,0,0.06)" : "none",
           transition: "background-color 200ms ease, box-shadow 200ms ease, border-color 200ms ease",
         }}

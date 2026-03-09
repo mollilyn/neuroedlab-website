@@ -23,7 +23,7 @@ export default function Hero() {
     <section
       id="hero"
       className="flex flex-col items-center px-4 pt-24 pb-0 text-center md:px-9 lg:px-12 lg:pt-[120px]"
-      style={{ background: "linear-gradient(180deg, #ffffff 0%, #f5fbf7 100%)" }}
+      style={{ background: "linear-gradient(180deg, var(--color-background) 0%, var(--color-primary-subtle) 100%)" }}
     >
       {/* Text block — 900px max width */}
       <div className="flex w-full max-w-[900px] flex-col items-center pb-[42px]">

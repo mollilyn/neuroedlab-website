@@ -32,7 +32,7 @@ export default function LearningApproach() {
       <div className="mx-auto max-w-[1200px] px-4 md:px-9 lg:px-12">
 
         {/* Section header */}
-        <div className="mb-10 flex flex-col items-center gap-4 text-center md:mb-14">
+        <div className="mb-7 flex flex-col items-center gap-4 text-center md:mb-14">
           <motion.h2
             {...fadeUp(0)}
             className="font-headline-en text-3xl font-semibold leading-tight text-[var(--color-text)] md:text-4xl"
@@ -49,14 +49,36 @@ export default function LearningApproach() {
         </div>
 
         {/* Pillar cards */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8">
           {content.pillars?.map((pillar, index) => (
             <motion.div
               key={index}
               {...fadeUp(0.1 * (index + 1))}
-              className="group rounded-2xl border border-[var(--color-text)]/10 bg-white p-7 transition-all duration-200 hover:-translate-y-1.5 hover:shadow-lg"
+              transition={{
+                opacity: { duration: 0.6, delay: 0.1 * (index + 1) },
+                y: { duration: 0.5, ease: "easeOut", delay: 0.1 * (index + 1) },
+                boxShadow: { duration: 0, delay: 0 },
+              }}
+              className="rounded-[12px] border bg-white px-5 py-[14px] md:p-7"
+              style={{ borderColor: "var(--color-primary)" }}
+              whileHover={{
+                y: -3,
+                boxShadow: "0 8px 24px rgba(var(--color-primary-rgb), 0.35)",
+                transition: {
+                  y: { duration: 0.2, ease: "easeOut" },
+                  boxShadow: { duration: 0 },
+                },
+              }}
+              whileTap={{
+                y: -3,
+                boxShadow: "0 8px 24px rgba(var(--color-primary-rgb), 0.35)",
+                transition: {
+                  y: { duration: 0.05 },
+                  boxShadow: { duration: 0 },
+                },
+              }}
             >
-              <h3 className="font-headline-en mb-3 text-xl font-semibold text-[var(--color-text)]">
+              <h3 className="font-headline-en mb-[9px] text-xl font-semibold text-[var(--color-text)] md:mb-3">
                 {pillar.title}
               </h3>
               <p className="font-body-en text-base leading-relaxed text-[var(--color-text)] opacity-75">

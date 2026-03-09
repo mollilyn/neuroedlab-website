@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer
       className="px-6 text-center md:px-12"
-      style={{ backgroundColor: "#F0EEE9", paddingTop: 14, paddingBottom: 14 }}
+      style={{ backgroundColor: "var(--color-alt-background)", paddingTop: 14, paddingBottom: 14 }}
     >
       <div className="mx-auto max-w-[1200px] flex flex-col items-center" style={{ gap: 5 }}>
 
