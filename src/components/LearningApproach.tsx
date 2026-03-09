@@ -49,17 +49,17 @@ export default function LearningApproach() {
         </div>
 
         {/* Pillar cards */}
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8">
+        <div className="grid grid-cols-1 gap-[14px] md:grid-cols-2 md:gap-8">
           {content.pillars?.map((pillar, index) => (
             <motion.div
               key={index}
               {...fadeUp(0.1 * (index + 1))}
               transition={{
                 opacity: { duration: 0.6, delay: 0.1 * (index + 1) },
-                y: { duration: 0.5, ease: "easeOut", delay: 0.1 * (index + 1) },
+                y: { duration: 0.25, ease: "easeOut", delay: 0.1 * (index + 1) },
                 boxShadow: { duration: 0, delay: 0 },
               }}
-              className="rounded-[12px] border bg-white px-5 py-[14px] md:p-7"
+              className="rounded-[12px] border bg-white px-5 py-[8px] md:p-7"
               style={{ borderColor: "var(--color-primary)" }}
               whileHover={{
                 y: -3,
@@ -78,10 +78,10 @@ export default function LearningApproach() {
                 },
               }}
             >
-              <h3 className="font-headline-en mb-[9px] text-xl font-semibold text-[var(--color-text)] md:mb-3">
+              <h3 className="font-headline-en mb-[7px] text-xl font-semibold text-[var(--color-text)] md:mb-3">
                 {pillar.title}
               </h3>
-              <p className="font-body-en text-base leading-relaxed text-[var(--color-text)] opacity-75">
+              <p className="font-body-en text-base leading-[1.14] text-[var(--color-text)] opacity-75 md:leading-relaxed">
                 {pillar.description}
               </p>
             </motion.div>
