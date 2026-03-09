@@ -22,10 +22,10 @@ export default function AboutNeuroEd() {
   return (
     <section
       id="neuroedlab"
-      className="pt-10 pb-12 md:py-24 lg:py-[120px]"
+      className="pt-10 pb-0 md:py-24 lg:py-[120px]"
       style={{ backgroundColor: "var(--color-alt-background)" }}
     >
-      <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-12 px-4 md:grid-cols-2 md:gap-16 md:px-9 lg:px-12">
+      <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-8 px-4 md:grid-cols-2 md:gap-16 md:px-9 lg:px-12">
 
         {/* Text content */}
         <div className="flex flex-col gap-6">
@@ -56,17 +56,16 @@ export default function AboutNeuroEd() {
           </motion.p>
         </div>
 
-        {/* Image */}
+        {/* Image — full-width divider on mobile, contained card on desktop */}
         <motion.div
           {...fadeUp(0.2)}
-          className="relative w-full overflow-hidden rounded-[24px]"
-          style={{ aspectRatio: "4 / 3" }}
+          className="relative -mx-4 w-screen h-[240px] overflow-hidden rounded-none md:mx-0 md:w-full md:h-auto md:aspect-[4/3] md:rounded-[24px]"
         >
           <Image
             src="/images/neuroedlab.jpg"
             alt="About NeuroEd Lab"
             fill
-            className="object-cover"
+            className="object-cover object-center"
           />
         </motion.div>
 
