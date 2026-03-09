@@ -24,12 +24,12 @@ export default function AboutMolly() {
       className="pt-0 pb-12 md:py-24 lg:py-[120px]"
       style={{ backgroundColor: "var(--color-alt-background)" }}
     >
-      <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-4 px-4 md:grid-cols-2 md:gap-16 md:px-9 lg:px-12">
+      <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-6 px-4 md:grid-cols-2 md:gap-16 md:px-9 lg:px-12">
 
         {/* Image — full-width divider on mobile (top of section), contained card on desktop */}
         <motion.div
           {...fadeUp(0.1)}
-          className="relative -mx-4 w-screen h-[240px] overflow-hidden rounded-none md:mx-0 md:w-full md:h-auto md:aspect-[4/3] md:rounded-[24px]"
+          className="relative -mx-4 w-screen h-[283px] overflow-hidden rounded-none md:mx-0 md:w-full md:h-auto md:aspect-[4/3] md:rounded-[24px]"
         >
           <Image
             src="/images/molly-portrait.jpg"

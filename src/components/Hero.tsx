@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useContent } from "@/src/utils/useContent";
 
@@ -19,9 +20,17 @@ const fadeUp = (delay: number) => ({
 export default function Hero() {
   const hero = useContent<HeroContent>("hero");
 
-  // Parallax: 100px scroll → ~12px image movement, clamped at 80px
+  // Parallax: 100px scroll → ~12px image movement, clamped at 80px (desktop only)
   const { scrollY } = useScroll();
   const imageY = useTransform(scrollY, [0, 667], [0, -80]);
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    setIsDesktop(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   return (
     <section
@@ -92,7 +101,7 @@ export default function Hero() {
         {/* Parallax wrapper — extends 80px below container so image never exposes background */}
         <motion.div
           className="absolute left-0 right-0 top-0"
-          style={{ bottom: "-80px", y: imageY }}
+          style={{ bottom: "-80px", y: isDesktop ? imageY : 0 }}
         >
           <Image
             src="/images/hero.jpg"

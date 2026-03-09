@@ -59,7 +59,7 @@ export default function AboutNeuroEd() {
         {/* Image — full-width divider on mobile, contained card on desktop */}
         <motion.div
           {...fadeUp(0.2)}
-          className="relative -mx-4 w-screen h-[240px] overflow-hidden rounded-none md:mx-0 md:w-full md:h-auto md:aspect-[4/3] md:rounded-[24px]"
+          className="relative -mx-4 w-screen h-[283px] overflow-hidden rounded-none md:mx-0 md:w-full md:h-auto md:aspect-[4/3] md:rounded-[24px]"
         >
           <Image
             src="/images/neuroedlab.jpg"

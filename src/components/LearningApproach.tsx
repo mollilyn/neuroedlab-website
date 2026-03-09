@@ -81,7 +81,7 @@ export default function LearningApproach() {
               <h3 className="font-headline-en mb-[7px] text-xl font-semibold text-[var(--color-text)] md:mb-3">
                 {pillar.title}
               </h3>
-              <p className="font-body-en text-base leading-[1.14] text-[var(--color-text)] opacity-75 md:leading-relaxed">
+              <p className="font-body-en text-base leading-[1.31] text-[var(--color-text)] opacity-75 md:leading-relaxed">
                 {pillar.description}
               </p>
             </motion.div>
