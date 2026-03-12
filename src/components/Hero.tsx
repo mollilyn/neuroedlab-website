@@ -122,9 +122,12 @@ export default function Hero() {
         </motion.p>
 
         <motion.a
-          {...fadeUp(0.4)}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.4, scale: { duration: 0.2, ease: "easeOut" } }}
+          whileHover={{ scale: 1.1, transition: { duration: 0.2, ease: "easeOut" } }}
           href="#contact"
-          className="group mt-[25px] inline text-[18px] font-medium md:text-[20px] text-[var(--color-text)] underline decoration-[var(--color-primary)] decoration-[1.5px] underline-offset-4 transition-colors hover:text-[var(--color-accent)] hover:decoration-[var(--color-accent)]"
+          className="group mt-[25px] inline-block text-[18px] font-medium md:text-[20px] text-[var(--color-text)] underline decoration-[var(--color-primary)] decoration-[1.5px] underline-offset-4 transition-colors hover:text-[var(--color-accent)] hover:decoration-[var(--color-accent)]"
         >
           {hero.cta}{" "}
           <span
