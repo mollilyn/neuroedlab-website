@@ -59,7 +59,7 @@ export default function Navbar() {
         {/* Logo */}
         <a
           href="#hero"
-          className="font-headline-en text-lg font-semibold text-[var(--color-text)] transition-colors hover:text-[var(--color-accent)]"
+          className="font-brand text-lg font-semibold text-[var(--color-text)] transition-colors hover:text-[var(--color-accent)]"
         >
           NeuroEd Lab
         </a>

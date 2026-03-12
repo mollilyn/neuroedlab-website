@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import {
   Roboto_Slab,
-  Noto_Sans,
   Courgette,
-  Noto_Serif_Thai,
-  Noto_Sans_Thai,
+  Sriracha,
+  Mali,
 } from "next/font/google";
 import { LanguageProvider } from "@/src/context/LanguageContext";
 import GoogleAnalytics from "@/src/components/GoogleAnalytics";
@@ -15,8 +14,10 @@ const robotoSlab = Roboto_Slab({
   variable: "--font-headline-en",
 });
 
-const notoSans = Noto_Sans({
-  subsets: ["latin"],
+const maliBody = Mali({
+  weight: ["400", "500", "600"],
+  subsets: ["latin", "thai"],
+  display: "swap",
   variable: "--font-body-en",
 });
 
@@ -26,13 +27,17 @@ const courgette = Courgette({
   variable: "--font-signature",
 });
 
-const notoSerifThai = Noto_Serif_Thai({
+const sriracha = Sriracha({
+  weight: "400",
   subsets: ["thai"],
+  display: "swap",
   variable: "--font-headline-th",
 });
 
-const notoSansThai = Noto_Sans_Thai({
+const mali = Mali({
+  weight: ["400", "500", "600"],
   subsets: ["thai"],
+  display: "swap",
   variable: "--font-body-th",
 });
 
@@ -49,7 +54,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${robotoSlab.variable} ${notoSans.variable} ${courgette.variable} ${notoSerifThai.variable} ${notoSansThai.variable}`}
+        className={`${robotoSlab.variable} ${maliBody.variable} ${courgette.variable} ${sriracha.variable} ${mali.variable}`}
       >
         <LanguageProvider>{children}</LanguageProvider>
         <GoogleAnalytics />

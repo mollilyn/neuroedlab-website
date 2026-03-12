@@ -95,7 +95,7 @@ export default function Hero() {
       <div className="flex w-full max-w-[900px] flex-col items-center pb-[42px]">
         <motion.p
           {...fadeUp(0)}
-          className="font-headline-en text-3xl font-semibold text-[var(--color-text)] md:text-4xl lg:text-[2.5rem]"
+          className="font-brand text-3xl font-semibold text-[var(--color-text)] md:text-4xl lg:text-[2.5rem]"
         >
           NeuroEd Lab
         </motion.p>

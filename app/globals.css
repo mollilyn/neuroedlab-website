@@ -16,6 +16,11 @@ body {
   font-family: var(--font-headline-en);
 }
 
+/* Always English — used for the brand name "NeuroEd Lab" in all languages */
+.font-brand {
+  font-family: var(--font-headline-en);
+}
+
 .font-body-en {
   font-family: var(--font-body-en);
 }
@@ -34,4 +39,19 @@ body {
 
 section[id] {
   scroll-margin-top: 70px;
+}
+
+/* Thai font override — only when html[lang="th"] is active.
+   Selectors target the classes directly (not html scope) so that
+   var(--font-headline-th) is resolved where body defines the variable. */
+html[lang="th"] body {
+  font-family: var(--font-body-th);
+}
+
+html[lang="th"] .font-headline-en {
+  font-family: var(--font-headline-th);
+}
+
+html[lang="th"] .font-body-en {
+  font-family: var(--font-body-th);
 }
