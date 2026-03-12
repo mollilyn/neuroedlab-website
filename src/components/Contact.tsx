@@ -47,6 +47,8 @@ const inputClass =
 
 const LINE_GREEN = "#4CC764";
 const LINE_GREEN_DARK = "#3db356";
+const ACCENT = "#FB6401";
+const ACCENT_DARK = "#e05800";
 
 export default function Contact() {
   const content = useContent<ContactContent>("contact");
@@ -205,8 +207,7 @@ export default function Contact() {
                   htmlFor="name"
                   className="text-sm font-medium text-[var(--color-text)]"
                 >
-                  {form_labels.nameLabel}{" "}
-                  <span className="text-[var(--color-accent)]">*</span>
+                  {form_labels.nameLabel}
                 </label>
                 <input
                   id="name"
@@ -273,8 +274,7 @@ export default function Contact() {
                   htmlFor="message"
                   className="text-sm font-medium text-[var(--color-text)]"
                 >
-                  {form_labels.messageLabel}{" "}
-                  <span className="text-[var(--color-accent)]">*</span>
+                  {form_labels.messageLabel}
                 </label>
                 <textarea
                   id="message"
@@ -313,14 +313,20 @@ export default function Contact() {
               />
 
               {/* Submit */}
-              <button
+              <motion.button
                 type="submit"
                 disabled={isSubmitting}
-                className="mt-1 min-h-[44px] self-center rounded-[10px] px-[26px] py-[14px] text-base font-semibold text-white transition-opacity hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed md:self-start"
-                style={{ backgroundColor: "var(--color-accent)" }}
+                className="mt-1 min-h-[44px] self-center rounded-[10px] px-[26px] py-[14px] text-base font-semibold text-white disabled:opacity-60 disabled:cursor-not-allowed md:self-start"
+                style={{ backgroundColor: ACCENT }}
+                whileHover={isSubmitting ? {} : { scale: 1.02, backgroundColor: ACCENT_DARK }}
+                whileTap={isSubmitting ? {} : { scale: 0.97 }}
+                transition={{
+                  scale: { duration: 0.15, ease: [0.16, 1, 0.3, 1] },
+                  backgroundColor: { duration: 0.15, ease: [0.16, 1, 0.3, 1] },
+                }}
               >
                 {isSubmitting ? "…" : form_labels.submitButton}
-              </button>
+              </motion.button>
 
               {submitError && (
                 <p className="text-sm text-[var(--color-accent)]">
