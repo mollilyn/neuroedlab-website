@@ -30,6 +30,8 @@ export default function Testimonials() {
   const total = items.length;
 
   const [activeIndex, setActiveIndex] = useState(0);
+  const sizerRef = useRef<HTMLDivElement>(null);
+  const [carouselHeight, setCarouselHeight] = useState<number | "auto">("auto");
   const isPaused = useRef(false);
   const pauseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const autoTimer = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -64,6 +66,13 @@ export default function Testimonials() {
     };
   }, [total]);
 
+  // Measure the invisible sizer after every index change so the wrapper
+  // height can be animated instead of snapping instantly.
+  useEffect(() => {
+    if (!sizerRef.current) return;
+    setCarouselHeight(sizerRef.current.offsetHeight);
+  }, [activeIndex]);
+
   if (total === 0) return null;
 
   return (
@@ -89,12 +98,15 @@ export default function Testimonials() {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
       >
       <div className="relative flex items-center justify-center">
-        <div
+        <motion.div
           className="relative w-full"
+          animate={{ height: carouselHeight }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           style={{ overflowX: "hidden" }}
         >
           {/* Invisible sizer — mirrors active quote in normal flow to set container height */}
           <div
+            ref={sizerRef}
             className="invisible mx-auto text-center"
             style={{
               width: `min(${SLIDE_WIDTH}px, 90vw)`,
@@ -141,7 +153,7 @@ export default function Testimonials() {
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
 
       {/* Pagination row */}
