@@ -79,11 +79,16 @@ export default function Navbar() {
           <LanguageToggle language={language} onToggle={toggleLanguage} />
         </nav>
 
+        {/* Language toggle – mobile header only */}
+        <div className="ml-auto mr-5 md:hidden">
+          <LanguageToggle language={language} onToggle={toggleLanguage} />
+        </div>
+
         {/* Hamburger – mobile only */}
         <button
           onClick={() => setMobileOpen(true)}
           aria-label="Open menu"
-          className="ml-auto flex flex-col gap-1.5 md:hidden"
+          className="flex flex-col gap-1.5 md:hidden"
         >
           <span className="block h-0.5 w-6 bg-[var(--color-text)]" />
           <span className="block h-0.5 w-6 bg-[var(--color-text)]" />
