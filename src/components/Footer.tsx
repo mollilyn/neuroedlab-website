@@ -8,7 +8,7 @@ export default function Footer() {
     >
       <div className="mx-auto max-w-[1200px] flex flex-col items-center" style={{ gap: 2 }}>
 
-        <p className="font-headline-en text-xl font-semibold text-[var(--color-text)]">
+        <p className="font-brand text-xl font-semibold text-[var(--color-text)]">
           NeuroEd Lab
         </p>
 
@@ -19,6 +19,21 @@ export default function Footer() {
         <p className="font-body-en text-sm text-[var(--color-text)] opacity-40">
           &copy; {year} NeuroEd Lab
         </p>
+
+        {/* Website by JR signature — mobile only, bottom center */}
+        <a
+          href="https://www.linkedin.com/in/jack-rowson/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Website by Jack Rowson"
+          className="mt-0.5 flex justify-center pt-[1.5px] pb-[1px] opacity-80 md:hidden"
+        >
+          <img
+            src="/images/website-by-jr.png"
+            alt="Website by JR"
+            style={{ height: "72px", width: "auto" }}
+          />
+        </a>
 
       </div>
 
