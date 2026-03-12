@@ -3,7 +3,7 @@ export default function Footer() {
 
   return (
     <footer
-      className="px-6 text-center md:px-12"
+      className="relative px-6 text-center md:px-12"
       style={{ backgroundColor: "var(--color-alt-background)", paddingTop: 8, paddingBottom: 8 }}
     >
       <div className="mx-auto max-w-[1200px] flex flex-col items-center" style={{ gap: 2 }}>
@@ -21,6 +21,22 @@ export default function Footer() {
         </p>
 
       </div>
+
+      {/* Website by JR signature — desktop only, anchored to footer left edge */}
+      <a
+        href="https://www.linkedin.com/in/jack-rowson/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Website by Jack Rowson"
+        className="absolute left-6 top-1/2 -translate-y-1/2 hidden md:block opacity-60 hover:opacity-100 transition-opacity duration-200"
+      >
+        <img
+          src="/images/website-by-jr.png"
+          alt="Website by JR"
+          style={{ height: "72px", width: "auto" }}
+        />
+      </a>
+
     </footer>
   );
 }
