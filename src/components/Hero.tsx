@@ -170,7 +170,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Sage divider */}
-      <div className="w-screen" style={{ height: "2px", backgroundColor: "var(--color-primary)" }} />
+      <div className="w-screen" style={{ height: "25px", backgroundColor: "var(--color-primary)" }} />
     </section>
   );
 }
